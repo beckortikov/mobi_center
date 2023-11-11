@@ -139,24 +139,24 @@ def show_data():
         new_page_num = min(num_pages, int(page_num) + 1)
         st.experimental_set_query_params(page=str(new_page_num))
 
-    # Add download button for Excel file
-    download_button = st.button("Скачать Excel файл")
-    if download_button:
-        download_excel(df)
-
     # Define a text input for the password
     password = st.text_input("Enter Admin Password", type="password")
     if is_admin(password):
-        if st.button("Delete All Data"):
+        # Add download button for Excel file
+        download_button = st.button("Скачать Excel файл")
+        if download_button:
+            download_excel(df)
+
+        if st.button('Delete All Data'):
             # Delete data from the SQLite database
             conn = sqlite3.connect('data.db')
             c = conn.cursor()
-            c.execute("DELETE FROM users")
+            c.execute('DELETE FROM users')
             conn.commit()
             conn.close()
-            st.success("All data deleted.")
+            st.success('All data deleted.')
     else:
-        st.warning("You are not authorized to delete data.")
+        st.warning('You are not authorized to delete data.')
 
 
 def download_excel(df):
