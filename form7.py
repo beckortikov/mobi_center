@@ -154,6 +154,7 @@ def show_data():
             c.execute('DELETE FROM users')
             conn.commit()
             conn.close()
+            reset_table()
             st.success('All data deleted.')
     else:
         st.warning('You are not authorized to delete data.')
@@ -174,6 +175,13 @@ def download_excel(df):
 def is_admin(password):
     return password == "12345"
 
+def reset_table():
+    conn = sqlite3.connect('data.db')
+    c = conn.cursor()
+    c.execute("DELETE FROM SQLITE_SEQUENCE WHERE NAME = 'users'")
+    conn.commit()
+    conn.close()
+    st.success("ID values reset.")
 
 # Create Streamlit app
 st.title("MobiCenter")
