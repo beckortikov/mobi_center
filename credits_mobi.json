@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "store-gsheet",
+  "private_key_id": "ef64905fe479cbf35302144f6afd00bb32856d2e",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQCR/iQpO+N/SMMI\n5Hm9cQzILWTb3jZnG1MpkRjGoNyFiXM7g1cM847NQuVtDz3KPBKJwecRI8RqY/1f\nMQNWv4tdHfjurDswFi2xQvvs+ly21rfFgI8OSMnmO1uAUn4tzzJZzH0HAZlXS/TN\ns1K+hZtgeml5p+2cqOLInvj3oFWtZXkAoGToUECj+BrWZqcPauTouHz0/410MrH4\nOCwGZDY1JtjbyfDu1s04WbP51TmwaUWw65tSndIAD/uBbTHq/Pe3Ovur22h4DNzG\nVYjHjfXbfeDF2PFrMah/i0WeemUFdNDtqBkykQpu++gYh1HnHYc6TZQBBzlykrLO\n2zNRi+11AgMBAAECgf9Dk+ApNg+YW5XsB9ZSWoIQJvMI01NbZsqX8xIE33E0Xut4\nINOqqxLu8IhCc0um0SfDnH3Y8TV6Cc6+wXFKNl/MOpN/5zl+iMWdx+PVTg6ck8d9\nJIUTl53ddJxmSckea0pjRsSY+aSBRCeND/S9PBswDXnFVnYmjgZr1ypndVAzcpHn\nFMMBLdmM/ZSwikBVSn9MasM9mW+T+8w+quQooj/XXHoWOSDW5426/vLwCvZIBCF3\nWfOn4FAPPhJjd917dzI/ReGq+NoIrRsvC9e9PnGSLaOr2eXZ6ciXiwR3l1RgmoWr\nOHMDvHJSBpI2dmtlwVynRAWAds6JQz/Yb/7Y178CgYEAylEa9HNn1le/A8ApXBPu\nvoCtvHCWAp/51sSUvV2b4aQfmJ0wG+g7Z3QkvK0/dXHIW0pJNBpBV4cnSU6HKRMz\nbRUcClbpE0qK1Aj8WQIqCOavEvSRv+nrxnzObErwmnMQK+o26agBJUfEITzFA5/Y\n3loO3HVfQi0pu00SU0rRGr8CgYEAuLsTqpnC7IBqfmTUpOkH265wJ99xzWqKIxRj\naI25aBA/0ATrddXtuKXa7KQYrwVtQe7GOdZv/U++SSOwjuQI4r9aEvHjKwnNV+T8\nPB3G5/SLYQugsrAg3a3HagwDNZOeHFLZtPlrQNhs8HhPhatYn1oHQCYmwlefcECS\nIU1KSMsCgYEAwxifI6e+NEX9X0KJH8/g5Df2UcdIAVP/ewmqXUnNrjO0fFjoMaEq\n18J6Qq/WiAynJtFl8iZ3aE5epiRh1kw7xS8cESRqMj4pzfq0Taj2nArIPUE245hR\n0uA7ttY1WtsmdxKuzXdDU433Jg4R9kLIwPKbbiCJMamXmpTh3QxCxMUCgYEAn+Rk\n+FQQcI4SHwZ9O6PrxkytDQYNRYRCvmxGQtfws87kvNOVTi/1i84auJqsNslWsSvP\n7X3a/wFHrZyzlGpx+nkvqJgvTTA1yS8M16faYyi6fywGUsO6HsXshbCSEoyL3O4l\nO8xq9fyeBmHMSuFtWrgc8HxVLf+TpCBvm11/v5MCgYAtPiPIAmc9gMzminZT20Pe\no5PeVtVS7STCRukGbs924yKoCZEQeKU+yyBTGUod2u3oDltrTGZZBVpKEULoXnX8\nxpFk+WExG2/XOIdund6O6OE1Fqx29e14POzgG96b1Scl16L7KVhJdP92yR2/kGsV\n6Qfk/yusYY1D/mRd6+yCzg==\n-----END PRIVATE KEY-----\n",
+  "client_email": "mobicenter@store-gsheet.iam.gserviceaccount.com",
+  "client_id": "100001418800756415814",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/mobicenter%40store-gsheet.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
