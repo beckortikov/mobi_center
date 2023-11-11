@@ -144,6 +144,20 @@ def show_data():
     if download_button:
         download_excel(df)
 
+    # Define a text input for the password
+    password = st.text_input("Enter Admin Password", type="password")
+    if is_admin(password):
+        if st.button("Delete All Data"):
+            # Delete data from the SQLite database
+            conn = sqlite3.connect('data.db')
+            c = conn.cursor()
+            c.execute("DELETE FROM users")
+            conn.commit()
+            conn.close()
+            st.success("All data deleted.")
+    else:
+        st.warning("You are not authorized to delete data.")
+
 
 def download_excel(df):
     # Create a link for downloading the Excel file
@@ -155,6 +169,10 @@ def download_excel(df):
     b64 = base64.b64encode(output.read()).decode()
     href = f'<a href="data:application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;base64,{b64}" download="data.xlsx">Скачать Excel файл</a>'
     st.markdown(href, unsafe_allow_html=True)
+
+
+def is_admin(password):
+    return password == "12345"
 
 
 # Create Streamlit app
