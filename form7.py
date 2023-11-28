@@ -67,12 +67,18 @@ def duplicate_to_gsheet(new_row):
 
 def save_data():
     # Get input values
-    first_name = st.text_input("Имя", key="first_name")
-    last_name = st.text_input("Фамилия", key="last_name")
-    birth_date = st.date_input("Дата рождения", min_value=datetime(1940, 1, 1), key="birth_date", value=None)
-    phone_number = st.text_input("Телефон", key="phone_number")
-    address = st.text_input("Адрес", key="address")
-    city = st.text_input("Город", key="city")
+    input1 = st.empty()
+    input2 = st.empty()
+    input3 = st.empty()
+    input4 = st.empty()
+    input5 = st.empty()
+    input6 = st.empty()
+    first_name = input1.text_input("Имя", key="first_name")
+    last_name = input2.text_input("Фамилия", key="last_name")
+    birth_date = input3.date_input("Дата рождения", min_value=datetime(1940, 1, 1), key="birth_date", value=None)
+    phone_number = input4.text_input("Телефон", key="phone_number")
+    address = input5.text_input("Адрес", key="address")
+    city = input6.text_input("Город", key="city")
 
     # Save button
     if st.button("Сохранить"):
@@ -105,7 +111,12 @@ def save_data():
         if new_data:
             new_row = list(new_data)
             duplicate_to_gsheet(new_row)
-
+        input1.text_input("Имя", key="first_name2")
+        input2.text_input("Фамилия", key="last_name2")
+        input3.date_input("Дата рождения", min_value=datetime(1940, 1, 1), key="birth_date2", value=None)
+        input4.text_input("Телефон", key="phone_number2")
+        input5.text_input("Адрес", key="address2")
+        input6.text_input("Город", key="city2")
 
 def show_data():
     # Get data from SQLite database
