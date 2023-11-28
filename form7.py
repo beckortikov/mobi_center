@@ -73,12 +73,12 @@ def save_data():
     input4 = st.empty()
     input5 = st.empty()
     input6 = st.empty()
-    first_name = input1.text_input("Ism", key="first_name")
-    last_name = input2.text_input("Familiya", key="last_name")
-    birth_date = input3.date_input("Tugilgan yili", min_value=datetime(1940, 1, 1), key="birth_date", value=None)
-    phone_number = input4.text_input("Telefon nomeri", key="phone_number")
-    address = input5.text_input("Kuchasi", key="address")
-    city = input6.text_input("Yashash shaxri", key="city")
+    first_name = input1.text_input("ISM", key="first_name")
+    last_name = input2.text_input("FAMILIYA", key="last_name")
+    birth_date = input3.date_input("TUGILGAN YILI", min_value=datetime(1940, 1, 1), key="birth_date", value=None)
+    phone_number = input4.text_input("TELEFON NOMERI", key="phone_number")
+    address = input5.text_input("KUCHA NOMI", key="address")
+    city = input6.text_input("YASHASH SHAHRI", key="city")
 
     # Save button
     if st.button("Сохранить"):
@@ -111,12 +111,12 @@ def save_data():
         if new_data:
             new_row = list(new_data)
             duplicate_to_gsheet(new_row)
-        input1.text_input("Ism", key="first_name2")
-        input2.text_input("Familiya", key="last_name2")
-        input3.date_input("Tugilgan yili", min_value=datetime(1940, 1, 1), key="birth_date2", value=None)
-        input4.text_input("Telefon nomeri", key="phone_number2")
-        input5.text_input("Kuchasi nomi", key="address2")
-        input6.text_input("Yashash shaxri", key="city2")
+        input1.text_input("ISM", key="first_name2")
+        input2.text_input("FAMILIYA", key="last_name2")
+        input3.date_input("TUGILGAN YILI", min_value=datetime(1940, 1, 1), key="birth_date2", value=None)
+        input4.text_input("TELEFON NOMERI", key="phone_number2")
+        input5.text_input("KUCHA NOMI", key="address2")
+        input6.text_input("YASHASH SHAHRI", key="city2")
 
 def show_data():
     # Get data from SQLite database
