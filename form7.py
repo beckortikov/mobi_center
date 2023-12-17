@@ -83,7 +83,7 @@ def save_data():
     city = input6.text_input("YASHASH SHAHRI", key="city")
 
     # Add a dropdown for FILIAL input
-    filial_options = ["JOMBOY", "JUMA", "TAYLOQ"]  # Add your list of filials here
+    filial_options = ["JOMBOY", "JUMA", "TAYLOQ", "SOGDIANA", "GAGARIN"]  # Add your list of filials here
     selected_filial = input_filial.selectbox("FILIAL", filial_options)
 
     # Save button
