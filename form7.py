@@ -141,7 +141,7 @@ def show_data():
     conn.close()
 
     # Display data with pagination
-    page_num = st.query_params.get("page", ["1"])[0]
+    page_num = st.experimental_get_query_params().get("page", ["1"])[0]
     page_size = 10
     start_idx = (int(page_num) - 1) * page_size
     end_idx = start_idx + page_size
