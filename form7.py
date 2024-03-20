@@ -19,7 +19,6 @@ c.execute('''
         last_name TEXT,
         birth_year INTEGER,
         phone_number TEXT,
-        address TEXT,
         city TEXT,
         filial TEXT,
         current_date TEXT,
@@ -58,8 +57,7 @@ def duplicate_to_gsheet(new_row, current_date, source):
 
     if not headers:
         headers = ['ID', 'Имя', 'Фамилия',
-                   'Год рождения', 'Телефон',
-                   'Адрес', 'Город', "Филиал", 'Дата', 'Источник']
+                   'Год рождения', 'Телефон', 'Город', "Филиал", 'Дата', 'Источник']
         worksheet.append_row(headers)
     else:
         # Insert the new row only if it's different from the last row in the sheet
@@ -74,14 +72,12 @@ def save_data():
     input2 = st.empty()
     input3 = st.empty()
     input4 = st.empty()
-    input5 = st.empty()
     input6 = st.empty()
     input_filial = st.empty()  # Add this line for FILIAL input
     first_name = input1.text_input("ISM", key="first_name")
     last_name = input2.text_input("FAMILIYA", key="last_name")
     birth_date = input3.date_input("TUGILGAN YILI", min_value=datetime(1940, 1, 1), key="birth_date", value=None)
     phone_number = input4.text_input("TELEFON NOMERI", key="phone_number")
-    address = input5.text_input("KUCHA NOMI", key="address")
     city = input6.text_input("YASHASH SHAHRI", key="city")
 
     # Add a dropdown for FILIAL input
@@ -103,9 +99,9 @@ def save_data():
         conn = sqlite3.connect('data.db')
         c = conn.cursor()
         c.execute("INSERT INTO users (first_name, last_name, birth_year, \
-                  phone_number, address, city, filial, current_date, selected_source) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)",
+                  phone_number, city, filial, current_date, selected_source) VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
                   (first_name, last_name, formatted_birth_date,
-                   phone_number, address, city, selected_filial, current_date, selected_source))
+                   phone_number, city, selected_filial, current_date, selected_source))
         conn.commit()
 
         # Fetch the last inserted data from SQLite
@@ -127,7 +123,6 @@ def save_data():
         input2.text_input("FAMILIYA", key="last_name2")
         input3.date_input("TUGILGAN YILI", min_value=datetime(1940, 1, 1), key="birth_date2", value=None)
         input4.text_input("TELEFON NOMERI", key="phone_number2")
-        input5.text_input("KUCHA NOMI", key="address2")
         input6.text_input("YASHASH SHAHRI", key="city2")
 
         # input_filial.empty()  # Clear FILIAL input
@@ -147,7 +142,7 @@ def show_data():
     end_idx = start_idx + page_size
 
     df = pd.DataFrame(data, columns=['ID', 'Имя', 'Фамилия', 'Год рождения',
-                                     'Телефон', 'Адрес', 'Город', 'Филиал'])
+                                     'Телефон', 'Город', 'Филиал'])
     paginated_data = df.iloc[start_idx:end_idx]
 
     st.table(paginated_data)
