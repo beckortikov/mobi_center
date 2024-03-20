@@ -142,7 +142,7 @@ def show_data():
     end_idx = start_idx + page_size
 
     df = pd.DataFrame(data, columns=['ID', 'Имя', 'Фамилия', 'Год рождения',
-                                     'Телефон', 'Город', 'Филиал'])
+                                     'Телефон', 'Город', 'Филиал', 'Дата заполнение', 'Источник'])
     paginated_data = df.iloc[start_idx:end_idx]
 
     st.table(paginated_data)
