@@ -21,7 +21,9 @@ c.execute('''
         phone_number TEXT,
         address TEXT,
         city TEXT,
-        filial TEXT
+        filial TEXT,
+        current_date TEXT,
+        selected_source TEXT
     )
 ''')
 
@@ -38,7 +40,7 @@ def authenticate_gspread():
 
 
 # Function to duplicate data to Google Sheets
-def duplicate_to_gsheet(new_row):
+def duplicate_to_gsheet(new_row, current_date, source):
     # Authenticate with Google Sheets
     gc = authenticate_gspread()
 
@@ -57,7 +59,7 @@ def duplicate_to_gsheet(new_row):
     if not headers:
         headers = ['ID', 'Имя', 'Фамилия',
                    'Год рождения', 'Телефон',
-                   'Адрес', 'Город']
+                   'Адрес', 'Город', "Филиал", 'Дата', 'Источник']
         worksheet.append_row(headers)
     else:
         # Insert the new row only if it's different from the last row in the sheet
@@ -85,7 +87,8 @@ def save_data():
     # Add a dropdown for FILIAL input
     filial_options = ["JOMBOY", "JUMA", "TAYLOQ", "SOGDIANA", "GAGARIN"]  # Add your list of filials here
     selected_filial = input_filial.selectbox("FILIAL", filial_options)
-
+    source_options = ["Флайер", "Инстаграм", "Телеграм", "Оператор", "YouTube"]
+    selected_source = st.selectbox("Источник данных", source_options)
     # Save button
     if st.button("Сохранить"):
         # Check if all fields are filled
@@ -95,14 +98,14 @@ def save_data():
 
         # Format birth date to the specified format
         formatted_birth_date = birth_date.strftime("%d-%m-%Y")
-
+        current_date = datetime.today().strftime('%d-%m-%Y')
         # Save data to SQLite database
         conn = sqlite3.connect('data.db')
         c = conn.cursor()
         c.execute("INSERT INTO users (first_name, last_name, birth_year, \
-                  phone_number, address, city, filial) VALUES (?, ?, ?, ?, ?, ?, ?)",
+                  phone_number, address, city, filial, current_date, selected_source) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)",
                   (first_name, last_name, formatted_birth_date,
-                   phone_number, address, city, selected_filial))
+                   phone_number, address, city, selected_filial, current_date, selected_source))
         conn.commit()
 
         # Fetch the last inserted data from SQLite
@@ -116,7 +119,8 @@ def save_data():
         # Update Google Sheets with the new data
         if new_data:
             new_row = list(new_data)
-            duplicate_to_gsheet(new_row)
+
+            duplicate_to_gsheet(new_row, current_date, selected_source)
 
         # Clear input fields after saving
         input1.text_input("ISM", key="first_name2")
@@ -125,6 +129,7 @@ def save_data():
         input4.text_input("TELEFON NOMERI", key="phone_number2")
         input5.text_input("KUCHA NOMI", key="address2")
         input6.text_input("YASHASH SHAHRI", key="city2")
+
         # input_filial.empty()  # Clear FILIAL input
 
 def show_data():
@@ -136,13 +141,13 @@ def show_data():
     conn.close()
 
     # Display data with pagination
-    page_num = st.experimental_get_query_params().get("page", ["1"])[0]
+    page_num = st.query_params.get("page", ["1"])[0]
     page_size = 10
     start_idx = (int(page_num) - 1) * page_size
     end_idx = start_idx + page_size
 
     df = pd.DataFrame(data, columns=['ID', 'Имя', 'Фамилия', 'Год рождения',
-                                     'Телефон', 'Адрес', 'Город', 'Филиал'])
+                                     'Телефон', 'Адрес', 'Город', 'Филиал', "Дата", "Источник"])
     paginated_data = df.iloc[start_idx:end_idx]
 
     st.table(paginated_data)
