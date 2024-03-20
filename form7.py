@@ -83,7 +83,7 @@ def save_data():
     # Add a dropdown for FILIAL input
     filial_options = ["JOMBOY", "JUMA", "TAYLOQ", "SOGDIANA", "GAGARIN"]  # Add your list of filials here
     selected_filial = input_filial.selectbox("FILIAL", filial_options)
-    source_options = ["Флайер", "Инстаграм", "Телеграм", "Оператор", "YouTube"]
+    source_options = ["Флайер", "Инстаграм", "Телеграм", "Оператор", "YouTube", "Танишлардан", "Бошка"]
     selected_source = st.selectbox("Источник данных", source_options)
     # Save button
     if st.button("Сохранить"):
