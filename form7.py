@@ -73,6 +73,7 @@ def save_data():
     input3 = st.empty()
     input4 = st.empty()
     input6 = st.empty()
+    input7 = st.empty()
     input_filial = st.empty()  # Add this line for FILIAL input
     first_name = input1.text_input("ISM", key="first_name")
     last_name = input2.text_input("FAMILIYA", key="last_name")
@@ -83,8 +84,9 @@ def save_data():
     # Add a dropdown for FILIAL input
     filial_options = ["JOMBOY", "JUMA", "TAYLOQ", "SOGDIANA", "GAGARIN"]  # Add your list of filials here
     selected_filial = input_filial.selectbox("FILIAL", filial_options)
-    source_options = ["Флайер", "Инстаграм", "Телеграм", "Оператор", "YouTube", "Танишлардан", "Бошка"]
-    selected_source = st.selectbox("Источник данных", source_options)
+    # source_options = ["Флайер", "Инстаграм", "Телеграм", "Оператор", "YouTube", "Танишлардан", "Бошка"]
+    # selected_source = st.selectbox("Источник данных", source_options)
+    selected_source = input7.text_input("QAERDAN BILGAN", key="selected_source")
     # Save button
     if st.button("Сохранить"):
         # Check if all fields are filled
@@ -124,6 +126,7 @@ def save_data():
         input3.date_input("TUGILGAN YILI", min_value=datetime(1940, 1, 1), key="birth_date2", value=None)
         input4.text_input("TELEFON NOMERI", key="phone_number2")
         input6.text_input("YASHASH SHAHRI", key="city2")
+        input7.text_input("QAERDAN BILGAN", key="selected_source2")
 
         # input_filial.empty()  # Clear FILIAL input
 
